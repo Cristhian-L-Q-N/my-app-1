@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+// import "./App.css";
+import React from "react";
+import { TodoCunter } from "./srcs/TodoCounter";
+import { TodoItem } from "./srcs/TodoItem";
+import { TodoList } from "./srcs/TodoList";
+import { TodoSearch } from "./srcs/TodoSearch";
+import { CreateTodoButtom } from "./srcs/CreateTodoButton";
+
+const todos = [
+  { text: "Cortar la cebolla", completed: false },
+  { text: "llorar", completed: false },
+  { text: "lalalaal", completed: false },
+];
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <TodoCunter />
+      <TodoSearch />
+      <TodoList>
+        {todos.map((todo) => (
+          <TodoItem key={todo.text} text={todo.text} />
+        ))}
+      </TodoList>
+      <CreateTodoButtom />
+    </React.Fragment>
   );
+  {
+    /* //sintaxis mas comoda jx
+    si ponemos {} podemos usar js en las etiquetas de html  {logo}
+    className != class of js */
+  }
+  {
+    /* <TodoCunter/>
+    <TodoSearch/>
+    <TodoList>
+     <TodoItem/> 
+    <TodoList/>
+    <CreateTodoButoom/> */
+  }
 }
 
 export default App;
